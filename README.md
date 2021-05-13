@@ -1,2 +1,2 @@
 # 2PhotonProcessing
-code for important processing steps for .tiff or .raw video files acquired from 2-Photon Imaging system 
+code for important processing steps for .tiff or .raw video files acquired from 2-Photon Imaging system with NWB structure storage
