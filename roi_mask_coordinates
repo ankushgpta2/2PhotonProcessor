@@ -54,7 +54,7 @@ img_seg = types.core.ImageSegmentation();
 img_seg.planesegmentation.set('PlaneSegmentation', ROIs)
 
 % create a module under processing for ROIs and place the imagesegmentation
-% into it 
+ % into it 
 ROI_module = types.core.ProcessingModule( ...
     'description', 'contains ROI information');
 
