@@ -1,0 +1,31 @@
+%% Prepare Data to Store in ROI Information Module 
+% load the ROI information from the Fall.mat file into MATLAB
+load(fullfile(path_to_suite2pfolder_contents, 'Fall.mat'));
+load('Fall.mat', 'stat');
+load('Fall.mat', 'F');
+
+% first get the center x and y coordinates for each ROI 
+center_of_cell_xcoord = [];
+center_of_cell_ycoord = [];
+ii = 1;
+
+for ii = 1:length(stat)
+    center = stat{ii}.med;
+    center_of_cell_xcoord(ii) = center(1);
+    center_of_cell_ycoord(ii) = center(2);
+end 
+
+xycoord_for_centers = vertcat(center_of_cell_xcoord, center_of_cell_ycoord)';
+
+% Make the ROI_masks (Xpix by Ypix Frame with Pixel Location of ROI as Corresponding ROI Number)
+ROI_mask = zeros(NpixelsX, NpixelsY);
+i = 1;
+ii = 1;
+for i = 1:length(stat)
+    for ii = 1:length(stat{1,i}.xpix)
+        if ROI_mask(stat{1,i}.ypix(ii), stat{1,i}.xpix(ii)) == 0
+            ROI_mask(stat{1,i}.ypix(ii), stat{1,i}.xpix(ii)) = i;
+        else
+        end
+    end
+end
